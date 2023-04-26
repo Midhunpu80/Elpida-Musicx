@@ -85,7 +85,7 @@ class Sharedscreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(60)),
                           child: IconButton(
                             onPressed: () {
-                              Get.to(Share.share("share"));
+                              Get.to(Share.share("https://play.google.com/store/apps/details?id=apps.brototype.music_player"));
                             },
                             icon: Icon(
                               Icons.share_rounded,

@@ -17,7 +17,7 @@ final allTXT = const Text(
 
 // ignore: prefer_const_constructors
 final allTXT1 = Text(
-  "Version:1",
+  "1.0.0+2",
   // ignore: prefer_const_constructors
   style: TextStyle(color: Colors.white, fontSize: 15),
 );
