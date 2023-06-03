@@ -95,19 +95,26 @@ class _Home_Music_LibraryState extends State<Home_Music_Library> {
                 width: widget.width4,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: widget.color3,
-                  image: const DecorationImage(
-                      image: AssetImage("images/mus22.jpg"), fit: BoxFit.cover),
+                  // image:  DecorationImage(gre
+                  //     image: AssetImage("images/mus15.jpg"), fit: BoxFit.cover),
                 ),
                 child: ListView.separated(
                     controller: _controller,
                     itemBuilder: (context, index) {
                       return Card(
-                        color: Color.fromARGB(0, 0, 0, 0),
+                        color: Color.fromARGB(27, 158, 158, 158),
                         child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                    width: 1,
+                                    color: Color.fromARGB(131, 0, 213, 255))),
                             child: ListTile(
-                                hoverColor: Colors.white,
-                                selectedColor: Colors.white,
+                         
+                              hoverColor: red,
+                              //  selectedTileColor: Color.fromARGB(255, 42, 226, 220),
+                                selected: true,
+                              
                                 ////////////
                                 //////////////////////control  the music/////////////////////////
                                 onTap: () {
@@ -138,6 +145,7 @@ class _Home_Music_LibraryState extends State<Home_Music_Library> {
                                   overflow: TextOverflow.fade,
                                   maxLines: 1,
                                   style: TextStyle(
+                                    fontSize: 13,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -205,27 +213,13 @@ class _Home_Music_LibraryState extends State<Home_Music_Library> {
                                                                         .songModel[
                                                                             index]
                                                                         .id);
-                                                                Get.snackbar(
-                                                                    "Favorites",
-                                                                    "Removed From The  Favorites",
-                                                                    colorText:
-                                                                        Colors
-                                                                            .white,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .blueAccent,
-                                                                    backgroundGradient: LinearGradient(
-                                                                        begin: Alignment
-                                                                            .centerRight,
-                                                                        end: Alignment.centerLeft,
-                                                                        colors: [
-                                                                          Color.fromARGB(
-                                                                              255,
-                                                                              255,
-                                                                              17,
-                                                                              0),
-                                                                          B
-                                                                        ]));
+                                                                snackbarnew(
+                                                                    titlename:
+                                                                        "Favorites",
+                                                                    grad: red,
+                                                                    grad2: B,
+                                                                    subname:
+                                                                        "Removed From The  Favorites");
 
                                                                 ////////////////////////////////////add the favorite ////////////////////////////////////////////////////
                                                               } else {
@@ -233,23 +227,13 @@ class _Home_Music_LibraryState extends State<Home_Music_Library> {
                                                                     widget.songModel[
                                                                         index]);
                                                                 // ignore: unused_local_variable
-                                                                Get.snackbar(
-                                                                    "Favorites",
-                                                                    "Added The Favorites",
-                                                                    colorText:
-                                                                        Colors
-                                                                            .white,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .blueAccent,
-                                                                    backgroundGradient: LinearGradient(
-                                                                        begin: Alignment
-                                                                            .centerRight,
-                                                                        end: Alignment.centerLeft,
-                                                                        colors: [
-                                                                          S,
-                                                                          B
-                                                                        ]));
+                                                                snackbarnew(
+                                                                    titlename:
+                                                                        "Favorites",
+                                                                    grad: A,
+                                                                    grad2: B,
+                                                                    subname:
+                                                                        "ADDED The  Favorites");
                                                               }
                                                               FavoriteDb
                                                                   .favoriteSongs
@@ -304,19 +288,10 @@ class _Home_Music_LibraryState extends State<Home_Music_Library> {
                                       /////////////////////////////////////////////////////////////////////////////////////////////////
                                     },
                                     icon: Icon(
-                                      Icons.more_vert,
+                                      Icons.more_horiz,
                                       color: Colors.white,
                                     )),
-                                leading: QueryArtworkWidget(
-                                  artworkBorder: BorderRadius.horizontal(
-                                      right: Radius.circular(10),
-                                      left: Radius.circular(10)),
-                                  id: widget.songModel[index].id,
-                                  type: ArtworkType.AUDIO,
-                                  nullArtworkWidget: Lottie.asset(
-                                      "images/mus23.json",
-                                      fit: BoxFit.cover),
-                                )
+                                leading: nullwidegt(widget.songModel[index].id)
 
                                 /////////////////////////////////////////////////////////lead////////////////
 

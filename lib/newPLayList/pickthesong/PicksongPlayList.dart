@@ -63,22 +63,15 @@ class _PlaylistAddSongState extends State<PlaylistAddSong> {
                     color: Colors.transparent,
                   ),
                   child: ListTile(
-                    leading: QueryArtworkWidget(
-                        id: item.data![index].id,
-                        type: ArtworkType.AUDIO,
-                        artworkWidth: 50,
-                        artworkHeight: 50,
-                        keepOldArtwork: true,
-                        artworkBorder: BorderRadius.circular(6),
-                        nullArtworkWidget: Lottie.asset("images/mus23.json")),
+                    leading: nullwidegt(item.data![index].id),
                     title: Text(
                       item.data![index].displayNameWOExt,
                       maxLines: 1,
-                      style: TextStyle(color: S),
+                      style: TextStyle(color: S, fontSize: 13),
                     ),
                     subtitle: Text(
                       item.data![index].artist.toString(),
-                      style: TextStyle(color: S),
+                      style: TextStyle(color: S, fontSize: 9),
                       maxLines: 1,
                     ),
                     trailing: SizedBox(
@@ -135,27 +128,18 @@ class _PlaylistAddSongState extends State<PlaylistAddSong> {
 
   songAddToPlaylist(SongModel data) async {
     await widget.playlist.add(data.id);
-    Get.snackbar("Song", "Song Added The PLaylist",
-        colorText: Colors.white,
-        backgroundColor: Colors.blueAccent,
-        backgroundGradient: LinearGradient(
-            begin: Alignment.centerRight,
-            end: Alignment.centerLeft,
-            colors: [
-              S,
-              B,
-            ]));
+    snackbarnew(
+        titlename: "Song",
+        grad: S,
+        grad2: B,
+        subname: "Song Added The PLaylist");
   }
 
   songDeleteFromPlaylist(SongModel data) async {
     const Duration(microseconds: 1);
+    await widget.playlist.add(data.id);
+
     await widget.playlist.deleteData(data.id);
-    Get.snackbar("Song", "Song Removed",
-        colorText: Colors.white,
-        backgroundColor: Colors.blueAccent,
-        backgroundGradient: LinearGradient(
-            begin: Alignment.centerRight,
-            end: Alignment.centerLeft,
-            colors: [B, const Color.fromARGB(255, 255, 0, 0)]));
+    snackbarnew(titlename: "Song", grad: S, grad2: B, subname: "Song Removed");
   }
 }

@@ -83,24 +83,29 @@ class _HomeState extends State<Home> {
 
                               bottomNavController._currentIndex = _index;
                             }),
-                        color: B,
+                        color: S,
                         height: 50,
                         items: [
                           Icon(
                             Icons.home,
-                            color: S,
+                            color: B,
+                            size: 28,
+                            semanticLabel: "Home",
                           ),
                           Icon(
                             Icons.search,
-                            color: S,
+                            color: B,
+                            size: 28,
                           ),
                           Icon(
                             Icons.favorite,
-                            color: S,
+                            color: B,
+                            size: 28,
                           ),
                           Icon(
                             Icons.settings,
-                            color: S,
+                            size: 28,
+                            color: B,
                           )
                         ]),
                   ),

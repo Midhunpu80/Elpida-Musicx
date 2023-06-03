@@ -34,20 +34,20 @@ Favorite_Library(double Fheight, double fwidth2) {
                         child: Lottie.network(
                             "https://assets9.lottiefiles.com/packages/lf20_KOXhzYGQfb.json")),
                     Text(
-                      "Add favorites ",
+                      "Add Favourite",
                       style: TextStyle(color: S, fontSize: 18.sp),
                     ),
                   ],
                 )
               : ListView.separated(
                   itemBuilder: (context, index) => Card(
-                        color: Colors.black,
+                        color: Color.fromARGB(27, 158, 158, 158),
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              image: const DecorationImage(
-                                  image: AssetImage("images/mus22.jpg"),
-                                  fit: BoxFit.cover)),
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(
+                                  width: 1,
+                                  color: Color.fromARGB(131, 0, 213, 255))),
                           child: ListTile(
                             onTap: (() {
                               List<SongModel> songlist = [...favoratedata];
@@ -63,40 +63,32 @@ Favorite_Library(double Fheight, double fwidth2) {
                               favoratedata[index].displayNameWOExt,
                               overflow: TextOverflow.fade,
                               maxLines: 1,
-                              style: TextStyle(color: Colors.white),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
                             ),
                             subtitle: Text(
                               "${favoratedata[index].artist}",
                               overflow: TextOverflow.fade,
                               maxLines: 1,
-                              style: TextStyle(color: Colors.white),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 9),
                             ),
-                            leading: QueryArtworkWidget(
-                              id: favoratedata[index].id,
-                              type: ArtworkType.AUDIO,
-                              nullArtworkWidget: Container(
-                                child: Lottie.network(
-                                    "https://assets4.lottiefiles.com/private_files/lf30_fjln45y5.json"),
-                              ),
-                              artworkFit: BoxFit.cover,
-                            ),
+                            leading: nullwidegt(favoratedata[index].id),
                             trailing: IconButton(
                                 onPressed: () => {
                                       FavoriteDb.favoriteSongs
                                           .notifyListeners(),
                                       FavoriteDb.delete(favoratedata[index].id),
-                                      Get.snackbar("Favourites",
-                                          "Removed from The Favorites",
-                                          colorText: Colors.white,
-                                          backgroundColor: Colors.blueAccent,
-                                          backgroundGradient: LinearGradient(
-                                              begin: Alignment.centerRight,
-                                              end: Alignment.centerLeft,
-                                              colors: [Colors.red, B]))
+                                      snackbarnew(
+                                          titlename: "favourite",
+                                          grad: red,
+                                          grad2: B,
+                                          subname:
+                                              "Removed from The favourite"),
                                     },
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.favorite,
-                                  color: Colors.red,
+                                  color: S,
                                 )),
                           ),
                         ),

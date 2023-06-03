@@ -10,8 +10,6 @@ class GetRecentlyPlayed {
   static ValueNotifier<List<SongModel>> recentSongNotifier = ValueNotifier([]);
   static List recentlyplayed = [];
 
-
-
   //////tap that time  song  add in the recently played list //////////////////
 
   static Future<void> addRecentlyPlayed(Songid) async {
@@ -20,7 +18,6 @@ class GetRecentlyPlayed {
     getRecentlySongs();
     recentSongNotifier.notifyListeners();
   }
-
 
 //////managing mostly played songs /////////////////////////////////////
   static Future<void> getRecentlySongs() async {

@@ -100,7 +100,7 @@ class _NowPlayingState extends State<NowPlaying> {
       child: Scaffold(
         backgroundColor: B,
         appBar: AppBar(
-          toolbarHeight: 5.h,
+          toolbarHeight: 11.h,
           backgroundColor: B,
           leading: IconButton(
             onPressed: () {
@@ -119,9 +119,9 @@ class _NowPlayingState extends State<NowPlaying> {
           actions: [
             IconButton(
                 onPressed: () => print("name"),
-                icon: Icon(
-                  Icons.more_vert_rounded,
-                  color: S,
+                icon: const Icon(
+                  Icons.more_horiz,
+                  color: Colors.white,
                 ))
           ],
         ),
@@ -130,11 +130,18 @@ class _NowPlayingState extends State<NowPlaying> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25.sp),
-              image: const DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('images/mus22.jpg'),
-              ),
+              gradient:  LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [Colors.white,A]),
+              color: Colors.white,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(70), topRight: Radius.circular(70)),
+                  
+              // image: const DecorationImage(
+              //   fit: BoxFit.cover,
+              //   image: AssetImage('images/mus22.jpg'),
+              // ),
               boxShadow: [
                 BoxShadow(
                     color: const Color.fromARGB(255, 0, 0, 0).withOpacity(1),
@@ -143,20 +150,20 @@ class _NowPlayingState extends State<NowPlaying> {
             ),
             child: Column(
               children: [
+                // QueryArtworkWidget(id: widget.songModel[currentIndex].id, type: ArtworkType.AUDIO),
                 const SizedBox(
                   height: 10,
                 ),
                 Container(
-                  height: 33.h,
-                  width: 70.w,
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Colors.white),
-                      color: const Color.fromARGB(0, 255, 255, 255),
-                      borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(180),
-                          bottomRight: Radius.circular(180),
-                          topLeft: Radius.circular(180),
-                          topRight: Radius.circular(180))),
+                  height: 30.h,
+                  width: 61.w,
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(0, 255, 255, 255),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(200),
+                          bottomRight: Radius.circular(200),
+                          topLeft: Radius.circular(200),
+                          topRight: Radius.circular(200))),
                   child: QueryArtworkWidget(
                     keepOldArtwork: true,
                     id: widget.songModel[currentIndex].id,
@@ -166,9 +173,23 @@ class _NowPlayingState extends State<NowPlaying> {
                         bottomRight: Radius.circular(180),
                         topLeft: Radius.circular(180),
                         topRight: Radius.circular(180)),
-                    nullArtworkWidget: Lottie.asset("images/mus23.json"),
+                    nullArtworkWidget: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200),
+                          color: Colors.pinkAccent,
+                        ),
+                        child: const Icon(
+                          Icons.music_note,
+                          color: Colors.black,
+                          size: 95,
+                        )),
                     artworkFit: BoxFit.cover,
                   ),
+                ),
+                const SizedBox(
+                  height: 32,
                 ),
 
                 Padding(
@@ -177,7 +198,7 @@ class _NowPlayingState extends State<NowPlaying> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        height: 50,
+                        height: 10,
                       ),
                       Center(
                         // title
@@ -186,13 +207,13 @@ class _NowPlayingState extends State<NowPlaying> {
                           style: const TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Color.fromARGB(255, 0, 0, 0)),
                           textAlign: TextAlign.center,
                           mode: TextScrollMode.endless,
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
                       Center(
                         // artist name
@@ -206,7 +227,8 @@ class _NowPlayingState extends State<NowPlaying> {
                           overflow: TextOverflow.clip,
                           maxLines: 1,
                           style: const TextStyle(
-                              color: Colors.white, fontSize: 15),
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 15),
                         ),
                       ),
                     ],
@@ -226,7 +248,7 @@ class _NowPlayingState extends State<NowPlaying> {
                     ),
                     child: Slider(
                       activeColor: A,
-                      inactiveColor: Colors.white,
+                      inactiveColor: Colors.blueAccent,
                       value: _position.inSeconds.toDouble(),
                       max: _duration.inSeconds.toDouble(),
                       min: const Duration(microseconds: 0).inSeconds.toDouble(),
@@ -249,31 +271,19 @@ class _NowPlayingState extends State<NowPlaying> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: B,
-                            border: Border.all(width: 1, color: S)),
-                        child: Text(
-                          _formatDuration(_position),
-                          style: const TextStyle(color: Colors.white),
-                        ),
+                      Text(
+                        _formatDuration(_position),
+                        style: TextStyle(color: B),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: B,
-                            border: Border.all(width: 1, color: S)),
-                        child: Text(
-                          _formatDuration(_duration),
-                          style: const TextStyle(color: Colors.white),
-                        ),
+                      Text(
+                        _formatDuration(_duration),
+                        style: TextStyle(color: B),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 4,
                 ),
                 Expanded(
                   child: PlayingControls(

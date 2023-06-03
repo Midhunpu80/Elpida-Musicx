@@ -18,9 +18,9 @@ class Mostly_Played extends StatelessWidget {
         appBar: AppBar(
           shadowColor: Color.fromARGB(255, 255, 0, 85),
           centerTitle: true,
-          title:  Text(
+          title: Text(
             "Mostly Played",
-            style: TextStyle(color:S),
+            style: TextStyle(color: S),
           ),
           leading: IconButton(
               onPressed: () => Get.back(),
@@ -29,12 +29,11 @@ class Mostly_Played extends StatelessWidget {
                 color: S,
               )),
           toolbarHeight: 50,
-          backgroundColor: B
-          ,
+          backgroundColor: B,
         ),
         body: Container(
           height: _mediaquery.height,
-          color: B,
+          
           width: _mediaquery.width,
           child: ListView(
             children: [Mostly_Libary()],

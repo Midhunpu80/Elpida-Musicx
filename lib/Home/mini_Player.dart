@@ -1,11 +1,11 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 import 'package:music_player/AllColors/allColors.dart';
 import 'package:music_player/Model/dbfunction/Recently_PlayedDb.dart';
 import 'package:music_player/controllers/control.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 class mini_Player extends StatefulWidget {
@@ -44,7 +44,6 @@ class _mini_PlayerState extends State<mini_Player> {
         height: 60,
         width: double.infinity,
         decoration: BoxDecoration(
-     
             borderRadius: BorderRadius.circular(25),
             color: Colors.black38,
             border: Border.all(color: A, width: 1)),
@@ -81,7 +80,8 @@ class _mini_PlayerState extends State<mini_Player> {
                       );
                     }
                   }),
-              leading: Lottie.asset("images/mus23.json"),
+              leading: nullwidegt(GetAllSongController
+                  .playingsong[GetAllSongController.currentIndexes].id),
               trailing: FittedBox(
                 fit: BoxFit.cover,
                 child: Row(

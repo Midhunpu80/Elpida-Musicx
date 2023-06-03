@@ -59,7 +59,7 @@ class _Home_page1State extends State<Home_page1> {
                 child: Column(
                   children: [
                     Image.asset(
-                      "images/mus21.jpg",
+                      "images/mus15.jpg",
                       fit: BoxFit.cover,
                     ),
                     allTXT,
@@ -78,7 +78,7 @@ class _Home_page1State extends State<Home_page1> {
           ////////////appbar /////////////////
           Homescreen_appbar(
             20.h,
-           40.w,
+            40.w,
             B,
           ),
 

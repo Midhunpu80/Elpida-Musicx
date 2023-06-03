@@ -51,10 +51,6 @@ class _playList_LibaryState extends State<playList_Libary> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: widget.Pcolor3,
-              image: const DecorationImage(
-                image: AssetImage("images/mus22.jpg"),
-                fit: BoxFit.cover,
-              ),
             ),
             child: ValueListenableBuilder(
                 valueListenable: PlaylistDb.playlistNotifier,
@@ -68,109 +64,127 @@ class _playList_LibaryState extends State<playList_Libary> {
                             style: TextStyle(fontSize: 20, color: S),
                           ),
                         )
-                      : ListView.separated(
+                      : GridView.builder(
                           controller: _controller,
                           itemBuilder: (context, index) {
                             final data = widget.Playlistpay.toList()[index];
 
                             /// Playlistnotifier = data as List<Music_Model>;
-                            return Card(
-                              color: Colors.transparent,
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      // image: DecorationImage(image: AssetImage("images/mus5.jpg"),fit: BoxFit.cover ),
+                            return InkWell(
+                              onTap: () {
+                                Get.to(() => PlaySongs_Add(
+                                      tindex: index,
+                                      playerdata1: data,
+                                    ));
+                              },
+                              child: Card(
+                                color: Colors.transparent,
+                                child: Container(
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        // image: DecorationImage(image: AssetImage("images/mus5.jpg"),fit: BoxFit.cover ),
 
-                                      border: Border.all(
-                                        width: 1,
-                                        color: S,
-                                      )),
-                                  child: ListTile(
-                                      onTap: (() {
-                                        Get.to(
-                                          () => PlaySongs_Add(
-                                            tindex: index,
-                                            playerdata1: data,
-                                          ),
-                                        );
-                                      }),
-                                      title: Text(
-                                        data.name,
-                                        style: TextStyle(color: S),
-                                      ),
-                                      trailing: IconButton(
-                                          onPressed: () {
-                                            showBottomSheet(
-                                                context: context,
-                                                builder: (context) {
-                                                  return Container(
-                                                    height: 100,
-                                                    width: double.infinity,
-                                                    color: B,
-                                                    child: Column(
-                                                      children: [
-                                                        TextButton.icon(
-                                                            onPressed: () {
-                                                              Get.back();
-                                                              deletedialouge(
-                                                                  context,
-                                                                  index);
-                                                            },
-                                                            icon: Icon(
-                                                              Icons.delete,
-                                                              color: Colors.red,
-                                                            ),
-                                                            label: Text(
-                                                              "Delete",
-                                                              style: TextStyle(
-                                                                  color: S),
-                                                            )),
-                                                        TextButton.icon(
-                                                            onPressed: () {
-                                                              Get.back();
+                                        border: Border.all(
+                                          width: 1,
+                                          color: S,
+                                        )),
+                                    child: Stack(
+                                      children: [
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.folder,
+                                              color: S,
+                                              size: 35,
+                                            )),
+                                        Positioned(
+                                            left: 60,
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  showBottomSheet(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return Container(
+                                                          height: 100,
+                                                          width:
+                                                              double.infinity,
+                                                          color: B,
+                                                          child: Column(
+                                                            children: [
+                                                              TextButton.icon(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Get.back();
+                                                                    deletedialouge(
+                                                                        context,
+                                                                        index);
+                                                                  },
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .delete,
+                                                                    color: Colors
+                                                                        .red,
+                                                                  ),
+                                                                  label: Text(
+                                                                    "Delete",
+                                                                    style: TextStyle(
+                                                                        color:
+                                                                            S),
+                                                                  )),
+                                                              TextButton.icon(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Get.back();
 
-                                                              Edit_Playlist(
-                                                                  context,
-                                                                  index,
-                                                                  data.name);
-                                                            },
-                                                            icon: Icon(
-                                                              Icons.edit,
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      0,
-                                                                      255,
-                                                                      30),
-                                                            ),
-                                                            label: Text(
-                                                              "Edit",
-                                                              style: TextStyle(
-                                                                  color: S),
-                                                            ))
-                                                      ],
-                                                    ),
-                                                  );
-                                                });
-                                          },
-                                          icon: Icon(
-                                            Icons.more_vert,
-                                            color: S,
-                                          )), ////,
-                                      ///////////////////////////////////////////////////////lead////////////////
-                                      leading: Icon(
-                                        Icons.folder,
-                                        color: A,
-                                        size: 50,
-                                      ))),
+                                                                    Edit_Playlist(
+                                                                        context,
+                                                                        index,
+                                                                        data.name);
+                                                                  },
+                                                                  icon: Icon(
+                                                                    Icons.edit,
+                                                                    color: Color
+                                                                        .fromARGB(
+                                                                            255,
+                                                                            0,
+                                                                            255,
+                                                                            30),
+                                                                  ),
+                                                                  label: Text(
+                                                                    "Edit",
+                                                                    style: TextStyle(
+                                                                        color:
+                                                                            S),
+                                                                  ))
+                                                            ],
+                                                          ),
+                                                        );
+                                                      });
+                                                },
+                                                icon: Icon(
+                                                  Icons.more_horiz,
+                                                  color: S,
+                                                ))),
+                                        Positioned(
+                                            top: 65,
+                                            left: 10,
+                                            child: Text(
+                                              data.name,
+                                              style: TextStyle(
+                                                  color: S, fontSize: 15),
+                                            ))
+                                      ],
+                                    )),
+                              ),
                             );
                           },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(
-                              height: 1.h,
-                            );
-                          },
-                          itemCount: Playlistpay.length);
+                          itemCount: Playlistpay.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 20,
+                                  mainAxisSpacing: 20));
                 }),
           ),
         ));
@@ -198,14 +212,11 @@ class _playList_LibaryState extends State<playList_Libary> {
                       setState(() {
                         PlaylistDb.deletePlaylist(index);
                         Get.back();
-                        Get.snackbar(
-                            "PlayList", "Folder Removed From The  PlayList",
-                            colorText: Colors.white,
-                            backgroundColor: Colors.blueAccent,
-                            backgroundGradient: LinearGradient(
-                                begin: Alignment.centerRight,
-                                end: Alignment.centerLeft,
-                                colors: [Color.fromARGB(255, 255, 17, 0), B]));
+                        snackbarnew(
+                            titlename: "PlayList",
+                            grad: red,
+                            grad2: B,
+                            subname: "Folder Removed From The  PlayList");
                       });
                     }
                   },

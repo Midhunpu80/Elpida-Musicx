@@ -86,7 +86,7 @@ class _PlaySongs_AddState extends State<PlaySongs_Add> {
                             left: 168,
                             child: IconButton(
                                 onPressed: () {
-                                  Get.to(()=>PlaylistAddSong(
+                                  Get.to(() => PlaylistAddSong(
                                       playlist: widget.playerdata1));
                                 },
                                 icon: Icon(
@@ -154,8 +154,8 @@ class _PlaySongs_AddState extends State<PlaySongs_Add> {
                                             GetRecentlyPlayed.addRecentlyPlayed(
                                                 song_playlist[index].id);
 
-                                            Get.to(()=>
-                                              NowPlaying(
+                                            Get.to(
+                                              () => NowPlaying(
                                                 songModel: song_playlist,
                                                 count: song_playlist.length,
                                               ),
@@ -166,7 +166,8 @@ class _PlaySongs_AddState extends State<PlaySongs_Add> {
                                                 .displayNameWOExt,
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
-                                            style: TextStyle(color: S),
+                                            style: TextStyle(
+                                                color: S, fontSize: 13),
                                           ),
                                           subtitle: Text(
                                             song_playlist[index]
@@ -174,17 +175,11 @@ class _PlaySongs_AddState extends State<PlaySongs_Add> {
                                                 .toString(),
                                             overflow: TextOverflow.fade,
                                             maxLines: 1,
-                                            style: TextStyle(color: S),
+                                            style: TextStyle(
+                                                color: S, fontSize: 9),
                                           ),
-                                          leading: QueryArtworkWidget(
-                                            keepOldArtwork: true,
-                                            id: song_playlist[index].id,
-                                            type: ArtworkType.AUDIO,
-                                            nullArtworkWidget: Lottie.asset(
-                                                "images/mus23.json"),
-                                            artworkBorder:
-                                                const BorderRadius.horizontal(),
-                                          ),
+                                          leading: nullwidegt(
+                                              song_playlist[index].id),
                                           trailing: IconButton(
                                               onPressed: () {
                                                 setState(() {

@@ -8,6 +8,7 @@ import 'package:music_player/Settings/settingOptions.dart/about.dart';
 import 'package:music_player/Settings/settingOptions.dart/privacyPolicy.dart';
 import 'package:music_player/Settings/settingOptions.dart/termCondtions.dart';
 import 'package:music_player/Settings/settingOptions.dart/themes.dart';
+import 'package:music_player/Splash/Splash.dart';
 
 import 'package:sizer/sizer.dart';
 
@@ -54,6 +55,8 @@ class settings extends StatelessWidget {
         actions: [
           GestureDetector(
               child: IconButton(
+                  splashColor: S,
+                  splashRadius: 50.0,
                   onPressed: () => print("name"),
                   icon: Icon(
                     Icons.settings,
@@ -89,6 +92,7 @@ class settings extends StatelessWidget {
                         ),
                       ),
                       trailing: IconButton(
+                          splashColor: Color.fromARGB(255, 0, 255, 8),
                           onPressed: () => Get.to(Nav_of_Setting[index]),
                           icon: Icon(
                             Icons.arrow_forward_ios,

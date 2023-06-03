@@ -11,7 +11,7 @@ Widget text_privacy_policy(String _text) {
     style: TextStyle(
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic,
-        color: Colors.black,
+        color: Color.fromARGB(255, 8, 0, 255),
         fontSize: 12),
   );
 }
@@ -21,7 +21,7 @@ Widget text_privacy_policy2(String _text2, double _textsize) {
   return Text(
     _text2,
     style: TextStyle(
-        color: Colors.black,
+        color: Color.fromARGB(255, 0, 255, 8),
         fontSize: _textsize,
         fontStyle: FontStyle.italic,
         fontWeight: FontWeight.bold),

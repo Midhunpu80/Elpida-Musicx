@@ -33,22 +33,20 @@ class _PlayingControlsState extends State<PlayingControls> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: B,
-                  border: Border.all(width: 1, color: S)),
+            
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
               child: IconButton(
                   onPressed: () {
                     if (FavoriteDb.isFavor(widget.favSongModel)) {
                       FavoriteDb.delete(widget.favSongModel.id);
-                      final remove = const SnackBar(
-                        backgroundColor: Colors.red,
+                      final remove =  SnackBar(
+                        backgroundColor: A,
                         content: Text('SONG REMOVED FROM THE PLAYLIST '),
                         duration: Duration(seconds: 1),
                       );
@@ -56,7 +54,7 @@ class _PlayingControlsState extends State<PlayingControls> {
                     } else {
                       FavoriteDb.add(widget.favSongModel);
                       final addFav = SnackBar(
-                        backgroundColor: A,
+                        backgroundColor: Color.fromARGB(255, 0, 255, 8),
                         content: Text('SONG ADDED THE FAVORITES'),
                         duration: Duration(seconds: 1),
                       );
@@ -71,69 +69,33 @@ class _PlayingControlsState extends State<PlayingControls> {
                         )
                       : Icon(
                           Icons.favorite_border_outlined,
-                          color: S,
+                          color: Colors.white,
                         )),
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
+            SizedBox(width: 220,),
+            IconButton(
+                onPressed: () {
+                  playlistDialogue(context, widget.favSongModel);
+                },
+                icon: Icon(
+                  Icons.playlist_add,
+                  size: 30,
                   color: B,
-                  border: Border.all(width: 1, color: S)),
-              child: IconButton(
-                  onPressed: () {
-                    playlistDialogue(context, widget.favSongModel);
-                  },
-                  icon: Icon(
-                    Icons.playlist_add,
-                    size: 30,
-                    color: Colors.white,
-                  )),
-            ),
+                )),
             const SizedBox(
               width: 15,
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: B,
-                  border: Border.all(width: 1, color: S)),
-              child: IconButton(
-                onPressed: () {
-                  isShuffling == false
-                      ? GetAllSongController.audioPlayer
-                          .setShuffleModeEnabled(true)
-                      : GetAllSongController.audioPlayer
-                          .setShuffleModeEnabled(false);
-                },
-                icon: StreamBuilder<bool>(
-                  stream:
-                      GetAllSongController.audioPlayer.shuffleModeEnabledStream,
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasData) {
-                      isShuffling = snapshot.data;
-                    }
-                    if (isShuffling) {
-                      return Icon(
-                        Icons.shuffle,
-                        size: 30,
-                        color: Colors.white,
-                      );
-                    } else {
-                      return Icon(
-                        Icons.shuffle,
-                        color: S,
-                      );
-                    }
-                  },
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: B,
-                  border: Border.all(width: 1, color: S)),
-              child: IconButton(
+           
+          ],
+        ),
+        const SizedBox(
+          height: 40,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+              IconButton(
                 onPressed: () {
                   GetAllSongController.audioPlayer.loopMode == LoopMode.one
                       ? GetAllSongController.audioPlayer
@@ -149,68 +111,46 @@ class _PlayingControlsState extends State<PlayingControls> {
                       return Icon(
                         Icons.repeat,
                         size: 30,
-                        color: S,
+                        color: B,
                       );
                     } else {
                       return Icon(
                         Icons.repeat,
-                        color: A,
+                        color: B,
                       );
                     }
                   },
                 ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
 // skip previous
             widget.firstSong
-                ? Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(70),
-                        color: B,
-                        border: Border.all(width: 1, color: S)),
-                    child: IconButton(
-                      onPressed: null,
-                      icon: Icon(
-                        Icons.skip_previous,
-                        color: Colors.transparent,
-                        size: 35.sp,
-                      ),
-                    ),
-                  )
-                : Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(70),
-                        color: B,
-                        border: Border.all(width: 1, color: S)),
-                    child: IconButton(
-                      onPressed: () {
-                        if (GetAllSongController.audioPlayer.hasPrevious) {
-                          GetAllSongController.audioPlayer.seekToPrevious();
-                        }
-                      },
-                      icon: Icon(
-                        Icons.skip_previous,
-                        color: A,
-                        size: 35.sp,
-                      ),
-                    ),
+                ? IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.skip_previous,
+                    color: Color.fromARGB(120, 0, 0, 0),
+                    size: 35.sp,
                   ),
+                )
+                : IconButton(
+                  onPressed: () {
+                    if (GetAllSongController.audioPlayer.hasPrevious) {
+                      GetAllSongController.audioPlayer.seekToPrevious();
+                    }
+                  },
+                  icon: Icon(
+                    Icons.skip_previous,
+                    color: B,
+                    size: 35.sp,
+                  ),
+                ),
 // play pause
 
             Container(
               decoration: BoxDecoration(
                   color: B,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: S, width: 1)),
+                  border: Border.all(color: S, width: 2)),
               child: IconButton(
                   onPressed: () {
                     if (mounted) {
@@ -227,54 +167,73 @@ class _PlayingControlsState extends State<PlayingControls> {
                   icon: isPlaying
                       ? Icon(
                           Icons.pause,
-                          color: A,
-                          size: 50.sp,
+                          color: Colors.white,
+                          size: 35.sp,
                         )
                       : Icon(
                           Icons.play_arrow,
-                          color: A,
-                          size: 50.sp,
+                          color: Colors.white,
+                          size: 35.sp,
                         )),
             ),
 
 // skip next
             widget.lastSong
                 ? Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(70),
-                          color: B,
-                          border: Border.all(width: 1, color: S)),
-                      child: IconButton(
-                        onPressed: null,
-                        icon: Icon(
-                          Icons.skip_next,
-                          color: Colors.transparent,
-                          size: 35.sp,
-                        ),
+                    child: IconButton(
+                      onPressed: null,
+                      icon: Icon(
+                        Icons.skip_next,
+                        color: Color.fromARGB(143, 0, 0, 0),
+                        size: 35.sp,
                       ),
                     ),
                   )
                 : Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(70),
-                          color: B,
-                          border: Border.all(width: 1, color: S)),
-                      child: IconButton(
-                        onPressed: () {
-                          if (GetAllSongController.audioPlayer.hasNext) {
-                            GetAllSongController.audioPlayer.seekToNext();
-                          }
-                        },
-                        icon: Icon(
-                          Icons.skip_next,
-                          color: A,
-                          size: 35.sp,
-                        ),
+                    child: IconButton(
+                      onPressed: () {
+                        if (GetAllSongController.audioPlayer.hasNext) {
+                          GetAllSongController.audioPlayer.seekToNext();
+                        }
+                      },
+                      icon: Icon(
+                        Icons.skip_next,
+                        color: B,
+                        size: 35.sp,
                       ),
                     ),
-                  )
+                  ),
+                   IconButton(
+                     onPressed: () {
+                       isShuffling == false
+                           ? GetAllSongController.audioPlayer
+                               .setShuffleModeEnabled(true)
+                           : GetAllSongController.audioPlayer
+                               .setShuffleModeEnabled(false);
+                     },
+                     icon: StreamBuilder<bool>(
+                       stream:
+                           GetAllSongController.audioPlayer.shuffleModeEnabledStream,
+                       builder: (BuildContext context, AsyncSnapshot snapshot) {
+                         if (snapshot.hasData) {
+                           isShuffling = snapshot.data;
+                         }
+                         if (isShuffling) {
+                           return Icon(
+                             Icons.shuffle,
+                             size: 30,
+                             color: Colors.black,
+                           );
+                         } else {
+                           return Icon(
+                             Icons.shuffle,
+                             color: Colors.black,
+                           );
+                         }
+                       },
+                     ),
+                   ),
+          
           ],
         )
       ],

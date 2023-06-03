@@ -77,9 +77,11 @@ class _recently_LibaryState extends State<recently_Libary> {
                           height: _mediaquery.height * 0.88,
                           width: _mediaquery.width,
                           decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("images/mus22.jpg"),
-                                  fit: BoxFit.cover)),
+                              // image: DecorationImage(
+                              //     image: AssetImage("images/mus22.jpg"),
+                              //     fit: BoxFit.cover)
+
+                              ),
                           child: ListView.separated(
                               itemBuilder: ((context, index) {
                                 return Container(
@@ -98,7 +100,7 @@ class _recently_LibaryState extends State<recently_Libary> {
                                     },
                                     leading: Text(
                                       "${index + 1}",
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: A),
                                     ),
                                     trailing: IconButton(
                                       onPressed: () {
@@ -157,27 +159,13 @@ class _recently_LibaryState extends State<recently_Libary> {
                                                                           .data![
                                                                               index]
                                                                           .id);
-                                                                  Get.snackbar(
-                                                                      "Favorites",
-                                                                      "Removed From The  Favorites",
-                                                                      colorText:
-                                                                          Colors
-                                                                              .white,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .blueAccent,
-                                                                      backgroundGradient: LinearGradient(
-                                                                          begin:
-                                                                              Alignment.centerRight,
-                                                                          end: Alignment.centerLeft,
-                                                                          colors: [
-                                                                            Color.fromARGB(
-                                                                                255,
-                                                                                255,
-                                                                                17,
-                                                                                0),
-                                                                            B
-                                                                          ]));
+                                                                  snackbarnew(
+                                                                      titlename:
+                                                                          "favourite",
+                                                                      grad: red,
+                                                                      grad2: B,
+                                                                      subname:
+                                                                          "Removed from The favourite");
 
                                                                   ////////////////////////////////////add the favorite ////////////////////////////////////////////////////
                                                                 } else {
@@ -185,23 +173,16 @@ class _recently_LibaryState extends State<recently_Libary> {
                                                                       item.data![
                                                                           index]);
                                                                   // ignore: unused_local_variable
-                                                                  Get.snackbar(
-                                                                      "Favorites",
-                                                                      "Added The Favorites",
-                                                                      colorText:
-                                                                          Colors
-                                                                              .white,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .blueAccent,
-                                                                      backgroundGradient: LinearGradient(
-                                                                          begin:
-                                                                              Alignment.centerRight,
-                                                                          end: Alignment.centerLeft,
-                                                                          colors: [
-                                                                            S,
-                                                                            B
-                                                                          ]));
+                                                                  FavoriteDb.add(
+                                                                      item.data![
+                                                                          index]);
+                                                                  snackbarnew(
+                                                                      titlename:
+                                                                          "favourite",
+                                                                      grad: S,
+                                                                      grad2: B,
+                                                                      subname:
+                                                                          "Added The Favorites");
                                                                 }
                                                                 FavoriteDb
                                                                     .favoriteSongs
@@ -254,22 +235,21 @@ class _recently_LibaryState extends State<recently_Libary> {
                                             }));
                                       },
                                       icon: Icon(
-                                        Icons.more_vert,
-                                        color: Colors.white,
+                                        Icons.more_horiz,
+                                        color: A,
                                       ),
                                     ),
                                     title: Text(
                                       recent[index].displayNameWOExt,
                                       overflow: TextOverflow.visible,
                                       maxLines: 1,
-                                      style:
-                                          const TextStyle(color: Colors.white),
+                                      style: TextStyle(color: A, fontSize: 13),
                                     ),
                                     subtitle: Text("${recent[index].artist}",
                                         overflow: TextOverflow.fade,
                                         maxLines: 1,
-                                        style: const TextStyle(
-                                            color: Colors.white)),
+                                        style:
+                                            TextStyle(fontSize: 9, color: A)),
                                   ),
                                 );
                               }),

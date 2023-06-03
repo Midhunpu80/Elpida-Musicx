@@ -57,7 +57,7 @@ class _serch_Page1State extends State<serch_Page1> {
                   child: Column(
                     children: [
                       Image.asset(
-                        "images/mus21.jpg",
+                        "images/mus15.jpg",
                         fit: BoxFit.cover,
                       ),
                       allTXT,
@@ -93,7 +93,7 @@ class _serch_Page1State extends State<serch_Page1> {
               Padding(
                 padding: EdgeInsets.only(left: 15, top: 5),
                 child: Text(
-                  "Enjoy Your Favoraite Music",
+                  "Enjoy Your Favourite Music",
                   style: TextStyle(
                       color: S, fontSize: 16, fontStyle: FontStyle.italic),
                 ),
@@ -104,7 +104,7 @@ class _serch_Page1State extends State<serch_Page1> {
               ),
               /////////////////////////////serchbar//////////////////////////////////////////
               Container(
-                  height: 45,
+                  height: 38,
                   margin: EdgeInsets.only(left: 20, right: 20),
                   child: TextFormField(
                       onChanged: (value) {
@@ -115,13 +115,17 @@ class _serch_Page1State extends State<serch_Page1> {
                       decoration: InputDecoration(
                           suffixIcon: _icon_buttom(Icons.search_rounded),
                           prefixIcon: _icon_buttom(Icons.music_note_outlined),
-                          hintText: "Search something.....",
+                          hintText: "Search Your songs.....",
                           fillColor: Colors.white,
                           filled: true,
                           border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   style: BorderStyle.solid, width: 5, color: S),
-                              borderRadius: BorderRadius.circular(50))))
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10)))))
                   //  ))),
                   ),
               const SizedBox(

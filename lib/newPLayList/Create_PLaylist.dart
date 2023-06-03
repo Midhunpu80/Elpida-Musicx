@@ -28,7 +28,7 @@ class Add_playList extends StatelessWidget {
             },
             style: OutlinedButton.styleFrom(disabledBackgroundColor: S),
             icon: const Icon(Icons.add),
-            label: const Text("Add Musics TO the playlist"),
+            label: const Text("Create The playlist"),
           )),
     );
   }
@@ -66,20 +66,21 @@ class Add_playList extends StatelessWidget {
                     if (play_.isEmpty) {
                       return;
                     } else if (datas.contains(music.name)) {
-                      Get.snackbar("Warning",
-                          "This PlayList Already Exist Create a new PLayList",
-                          colorText: Colors.white, backgroundColor: B);
+                      snackbarnew(
+                          titlename: "Warning",
+                          grad: wh,
+                          grad2: B,
+                          subname:
+                              "This PlayList Already Exist Create a new PLayList");
                     } else {
                       final alredyadd = Music_Model(name: play_, songid: []);
                       PlaylistDb.addPlaylist(alredyadd);
                       Get.back();
-                      Get.snackbar("PlaList", "New PlayList Created",
-                          colorText: Colors.white,
-                          backgroundColor: Colors.blueAccent,
-                          backgroundGradient: LinearGradient(
-                              begin: Alignment.centerRight,
-                              end: Alignment.centerLeft,
-                              colors: [S, B]));
+                      snackbarnew(
+                          titlename: "PlayList",
+                          grad: S,
+                          grad2: B,
+                          subname: "New PlayList Created");
                     }
                   },
                   icon: const Icon(Icons.playlist_add),

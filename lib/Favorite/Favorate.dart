@@ -25,13 +25,13 @@ class favorate extends StatelessWidget {
           backgroundColor: Colors.transparent,
           leading: IconButton(
               onPressed: () => print("name"),
-              icon: const Icon(
+              icon:  Icon(
                 Icons.favorite,
-                color: Color.fromARGB(255, 255, 0, 0),
+                color: S,
                 size: 40,
               )),
           title: Text(
-            "Favoraite ",
+            "Favourite ",
             style: TextStyle(color: S, fontSize: 25),
           ),
           actions: [

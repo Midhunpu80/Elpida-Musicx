@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:music_player/AllColors/allColors.dart';
 import 'package:music_player/main.dart';
 
@@ -53,31 +53,27 @@ class _The_mesState extends State<The_mes> {
                     onChanged: (value) {
                       Box.put("isdark", value);
                       isdark
-                          ? Get.snackbar("Theme", "Theme Changed   Light Mode ",
-                              colorText: Colors.white,
-                              backgroundColor: Colors.blueAccent,
-                              backgroundGradient: LinearGradient(
-                                  begin: Alignment.centerRight,
-                                  end: Alignment.centerLeft,
-                                  colors: [B, Colors.amber]))
-                          : Get.snackbar("Theme", "Theme Changed  Dark Mode ",
-                              colorText: Colors.white,
-                              backgroundColor: Colors.blueAccent,
-                              backgroundGradient: LinearGradient(
-                                  begin: Alignment.centerRight,
-                                  end: Alignment.centerLeft,
-                                  colors: [Colors.white, B]));
+                          ? snackbarnew(
+                            titlename: "Theme",
+                              grad: B,
+                              grad2: Colors.amber,
+                              subname: "Theme Changed   Light Mode ")
+                          : snackbarnew(
+                              titlename: "Theme",
+                              grad: Colors.white,
+                              grad2: B,
+                              subname: "Theme Changed  Dark Mode ");
                     },
                     value: isdark,
                   ),
-                  Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50)),
-                      height: 500,
-                      width: 200,
-                      child: isdark
-                          ? Lottie.asset("images/mus25.json")
-                          : Lottie.asset("images/mus34.json")),
+                  // Container(
+                  //     decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(50)),
+                  //     height: 500,
+                  //     width: 200,
+                  //     child: isdark
+                  //         ? Lottie.asset("images/mus25.json")
+                  //         : Lottie.asset("images/mus34.json")),
                   Align(
                       alignment: Alignment.topCenter,
                       child: isdark

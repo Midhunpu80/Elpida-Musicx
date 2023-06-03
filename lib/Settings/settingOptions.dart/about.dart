@@ -57,7 +57,7 @@ class about_ extends StatelessWidget {
                   child: Column(
                     children: [
                       Abouttext("App Name : Elpida Musixcs"),
-                      Abouttext("Version : 1"),
+                      Abouttext("Version : 1.3"),
                       Abouttext("Developed By Midhunpu")
                     ],
                   ),

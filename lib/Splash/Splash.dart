@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:music_player/AllColors/allColors.dart';
 import 'package:music_player/Home/Home.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,7 +31,7 @@ class _splashState extends State<splash> {
     // ignore: todo
     // TODO: implement initState
     super.initState();
-    spla_sh();
+   spla_sh();
   }
 
   @override
@@ -38,62 +39,58 @@ class _splashState extends State<splash> {
     // ignore: unused_local_variable
     var _mediquery = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: SafeArea(
-        child: Container(
-            height: 100.h,
-            width: 100.w,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/mus22.jpg"), fit: BoxFit.fitHeight),
-            ),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 320,
-                ),
-                Center(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        border: Border.all(
-                          width: 1,
-                          color: Colors.white,
-                        )),
-                    child: const CircleAvatar(
-                      radius: 80,
-                      backgroundImage: AssetImage("images/mus21.jpg"),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                    child: AnimatedTextKit(animatedTexts: [
-                  WavyAnimatedText("Elpida Musicx",
-                      textStyle: const TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 5))
-                ])),
-                SizedBox(
-                  height: 15.h,
-                  width: 35.w,
-                  child: Lottie.asset("images/mus29.json"),
-                ),
+    
+    ///  backgroundColor: Theme.of(context).primaryColor,
+      body: Container(
+          height: 100.h,
+          width: 100.w,
+          decoration:  BoxDecoration(
+           
+           gradient: LinearGradient(begin: Alignment.bottomRight,end: Alignment.topRight,colors: [S,B])
 
-                ///  AnimatedTextKit(animatedTexts: [WavyAnimatedText("elpid misics,",textStyle: TextStyle(color: Colors.white))])
-              ],
-            )),
-      ),
+          ),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 300,
+              ),
+              Container(
+                height: 150,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(
+                      width: 1,
+                    
+                    
+                    )),
+                    
+                    
+                    child: Lottie.asset("images/112281-karaoke.json"),
+                    ),
+              
+          const   SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                  child: AnimatedTextKit(animatedTexts: [
+              ColorizeAnimatedText("Elpida Musicx",
+                    textStyle: const TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 5), colors: [Colors.black,S,Color.fromARGB(255, 255, 0, 85),Colors.amber,S])
+              ])),
+             
+
+              ///  AnimatedTextKit(animatedTexts: [WavyAnimatedText("elpid misics,",textStyle: TextStyle(color: Colors.white))])
+            ],
+          )),
     );
   }
 
   Future<void> spla_sh() async {
     // ignore: prefer_const_constructors
-    await Future.delayed(Duration(seconds: 6));
+    await Future.delayed(Duration(seconds: 9));
     Get.to(Home());
   }
 }

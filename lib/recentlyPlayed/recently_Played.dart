@@ -27,9 +27,9 @@ class recently_Played extends StatelessWidget {
           toolbarHeight: 50,
           backgroundColor: B,
         ),
-        body: Container(
+        body: SizedBox(
           height: _mediaquery.height * 1,
-          color: B,
+   
           width: _mediaquery.width,
           child: ListView(
             children: [recently_Libary()],

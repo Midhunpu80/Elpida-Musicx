@@ -22,7 +22,6 @@ class FavoriteDb {
   static isFavor(SongModel song) {
     if (musicDb.values.contains(song.id)) {
       return true;
-  
     }
     return false;
   }
@@ -45,9 +44,8 @@ class FavoriteDb {
         deletekey = key;
       }
     });
-     musicDb.delete(deletekey);
+    musicDb.delete(deletekey);
     favoriteSongs.value.removeWhere((song) => song.id == id);
-    
   }
 
   static clear() async {
